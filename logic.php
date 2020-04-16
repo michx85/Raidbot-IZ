@@ -2427,9 +2427,18 @@ function keys_vote($raid)
                         $buttons_pokemon = inline_key_array($buttons_pokemon, 3);
                     } else {
                         // Reset pokemon buttons.
-                        $buttons_pokemon = [];
+                        $buttons_pokemon = [array(
+                            'text'          => 'getPublicTranslation('any_pokemon')',
+                            'callback_data' => $raid['id'] . ':vote_pokemon:0'
+                        );];
                     }
                 }
+                debug_log("Pokemon:".$raid['pokemon']);
+                // $button_info = [array(
+                //    'text'          => 'Boss-Info: '.get_local_pokemon_name($raid['pokemon']),
+                //     'callback_data' => '0:boss-info:'.$raid['pokemon']
+                // );];
+
 
                 // Init keys array
                 $keys = [];
