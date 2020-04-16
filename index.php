@@ -56,6 +56,14 @@ if ($webhook === true) {
 // Update the user
 update_user($update);
 
+
+if(isset($update['message']['new_chat_member']) AND $update['message']['chat']['id'] == WELCOME_CHAT)
+{
+  sendMessage(WELCOME_CHAT, WELCOME_MSG);
+
+}
+
+
 // Callback query received.
 if (isset($update['callback_query'])) {
     // Logic to get the module
