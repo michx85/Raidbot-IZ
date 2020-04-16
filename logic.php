@@ -789,7 +789,7 @@ function get_user($user_id)
     $msg = '';
 
     // Add name.
-    $msg .= 'Name: <a href="tg://user?id=' . $row['user_id'] . '">' . htmlspecialchars($row['name']) . '</a>' . CR;
+    $msg .= 'Name: <a href="tg://user?id=' . $row['user_id'] . '">' . htmlspecialchars($row['trainername']) . '</a>' . CR;
 
     // Unknown team.
     if ($row['team'] === NULL) {

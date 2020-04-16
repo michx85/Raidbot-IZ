@@ -55,7 +55,7 @@ if(FORCE_TRAINERNAME == true)
 $access = bot_access_check($update, 'trainer-share', true, true);
 
 // Display sharing options for admins and users with trainer-share permissions
-if($access && (is_file(ROOT_PATH . '/access/' . $access) || $access == 'BOT_ADMINS')) {
+if($access && (is_file(ROOT_PATH . '/access/' . $access) || $access == 'BOT_ADMINS') AND false) {
     // Add sharing keys.
     $share_keys = [];
     $share_keys[] = universal_inner_key($keys, '0', 'trainer_add', '0', getTranslation('trainer_message_share'));
