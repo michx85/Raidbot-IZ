@@ -59,7 +59,10 @@ update_user($update);
 
 if(isset($update['message']['new_chat_member']) AND $update['message']['chat']['id'] == WELCOME_CHAT)
 {
-  sendMessage(WELCOME_CHAT,"Willkommen <b>".$update['message']['new_chat_member']['first_name']."</b>".CR.WELCOME_MSG);
+  $text = WELCOME_MSG;
+  $text = str_replace('<name>, $update['message']['new_chat_member']['first_name'], '$text);
+  $text = str_replace('<br>, CR, '$text);
+  sendMessage(WELCOME_CHAT,WELCOME_MSG);
 
 }
 
