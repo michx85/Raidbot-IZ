@@ -1906,17 +1906,17 @@ function keys_vote($raid)
     debug_log($now, 'UTC NOW:');
     debug_log($end_time, 'UTC END:');
     debug_log($start_time, 'UTC START:');
-error_log("Pokemoni:".$raid['pokemon']);
-    debug_log("Pokemoni:".$raid['pokemon']);
+    error_log("Pokemoni:".$raid['pokemon']);
+
 
     // Find Info-image_type_to_extension
-    /* $image = ROOT_PATH . '/boss-info/' . $raid['pokemon'] .'.png' ;
+     $image = ROOT_PATH . '/boss-info/' . $raid['pokemon'] .'.png' ;
     if(file_exists($image))
-      debug_log("Vorhanden Pokemoni:".$raid['pokemon']);
+      error_log("Vorhanden Pokemoni:".$raid['pokemon']);
     else {
-      debug_log("Nicht vorhanden Pokemoni:".$raid['pokemon']);
+      error_log("Nicht vorhanden Pokemoni:".$raid['pokemon']);
     }
-    */
+
     // Extra Keys
     $buttons_extra = [
         [
