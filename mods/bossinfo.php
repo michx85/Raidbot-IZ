@@ -8,7 +8,7 @@ $pokemon = $data['arg'];
 
 $user_id = $update['callback_query']['from']['id'];
 
-sendMessage($user_id, $pokemon);
+send_photo($user_id, IMAGE_PATH.$pokemon.'.png');
 
 
  ?>
