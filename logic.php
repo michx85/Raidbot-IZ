@@ -1891,8 +1891,9 @@ function keys_trainerinfo($show = false)
  * @param $raid
  * @return array
  */
-function keys_vote($raid)sadfasd§$%&/()=;sdf3
+function keys_vote($raid)
 {
+  error_log('joss');
     // Init keys_time array.
     $keys_time = [];
 
