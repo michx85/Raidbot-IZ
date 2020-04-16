@@ -39,7 +39,7 @@ $keys = [
 $eggs = $GLOBALS['eggs'];
 if(!in_array($pokedex_id, $eggs)) {
     $keys_cp_weather = [
-        [  
+        [
             [
                 'text'          => getTranslation('pokedex_min_cp'),
                 'callback_data' => $poke_id_form . ':pokedex_set_cp:min-20-add-0'
@@ -67,6 +67,12 @@ if(!in_array($pokedex_id, $eggs)) {
             [
                 'text'          => getTranslation('pokedex_weather'),
                 'callback_data' => $poke_id_form . ':pokedex_set_weather:add-0'
+            ]
+        ],
+        [
+            [
+                'text'          => getTranslation('pokedex_neededTrainer'),
+                'callback_data' => $poke_id_form . ':pokedex_set_neededTrainer:add-0'
             ]
         ]
     ];
