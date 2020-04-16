@@ -3271,7 +3271,7 @@ function raid_poll_message($msg_array, $append, $skip = false)
  */
 function show_raid_poll($raid)
 {
-  error_log("Show Raid Poll");
+
     // Init empty message string.
     //$msg = '';
     $msg = array();
@@ -3350,15 +3350,15 @@ function show_raid_poll($raid)
         $msg = raid_poll_message($msg, ($pokemon_weather != 0) ? (' ' . get_weather_icons($pokemon_weather)) : '', true);
         $msg = raid_poll_message($msg, CR, true);
 
-
-        if($raid['neededTrainer'] > 0)
+        $neededTrainer = get_pokemon_neededTrainer($raid['pokemon']);
+        if($neededTrainer > 0)
         {
-          debug_log("ben. Trainer: ".$raid['neededTrainer']);
-          $msg = raid_poll_message($msg, "Machbar mit <b>".$raid['neededTrainer']."</b> Trainern mit suboptimalen LVL25 Kontern/Wetter", true);
+          debug_log("ben. Trainer: ".$neededTrainer);
+          $msg = raid_poll_message($msg, "Machbar mit <b>".$neededTrainer."</b> Trainern mit suboptimalen LVL25 Kontern/Wetter", true);
           $msg = raid_poll_message($msg, CR, true);
         }
         else {
-          debug_log("keine ben. Trainer: ".$raid['neededTrainer']);
+          debug_log("keine ben. Trainer: ".$neededTrainer);
         }
 
     //}
