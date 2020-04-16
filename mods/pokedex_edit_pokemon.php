@@ -71,7 +71,7 @@ if(!in_array($pokedex_id, $eggs)) {
         ],
         [
             [
-                'text'          => getTranslation('pokedex_neededTrainer'),
+                'text'          => 'Machbar mit...'),
                 'callback_data' => $poke_id_form . ':pokedex_set_neededTrainer:add-0'
             ]
         ]
