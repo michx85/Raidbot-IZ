@@ -1908,7 +1908,7 @@ function keys_vote($raid)
     debug_log($start_time, 'UTC START:');
 
 
-    $button_bossinfo = [];
+    $buttons_bossinfo = [];
     // Find Info-image_type_to_extension
      $image = IMAGE_PATH  . $raid['pokemon'] .'.png' ;
     if(file_exists($image))
