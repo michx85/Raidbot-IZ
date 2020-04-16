@@ -9,8 +9,10 @@ debug_log('START()');
 // Check access.
 $access = bot_access_check($update, 'create', false, true);
 
+
 if(FORCE_TRAINERNAME)
 {
+  debug_log('CHECK_TRAINERNAME');
   // Check UserID
   if (isset($update['message']['from'])) {
   	$updmsg = $update['message']['from'];
@@ -31,17 +33,24 @@ if(FORCE_TRAINERNAME)
   	debug_log($update, '!');
   	return false;
   }
-
+debug_log('SEARCH_TRAINERNAME: '.$userid);
   $rs = my_query( "SELECT user_id, trainername, team, level FROM users WHERE user_id = {$userid}");
 
 
   $answer = $rs->fetch_assoc();
   if($answer['ingame'] == '')
   {
+    debug_log('ASKFOR_TRAINERNAME: '.$userid);
   	sendMessage($userid, 'Moin...'.CR.'Wir kennen uns noch gar nicht. Kannst du mir bitte deinen Trainernamen nennen?');
   	my_query("UPDATE users SET warteaufname = DATE_ADD(NOW(), INTERVAL 1 HOUR) WHERE user_id = {$userid}");
   	die();
   }
+  else {
+      debug_log('TRAINERNAME_SUCCES: '.$userid);
+  }
+}
+else {
+  debug_log('NOCHECK_TRAINERNAME:');
 }
 
 // Raid event?

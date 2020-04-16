@@ -1,5 +1,5 @@
 <?php
-error_log("Test");
+
 /**
  * Raid access check.
  * @param $update
