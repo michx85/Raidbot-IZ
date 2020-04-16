@@ -68,8 +68,8 @@ if($action == 'add') {
         'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-8'
     );
     $keys[] = array(
-        'text'          => 9,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-9'
+        'text'          => 0,
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-0'
     );
 
     $keys = inline_key_array($keys, 3);
