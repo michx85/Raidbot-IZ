@@ -37,39 +37,39 @@ if($action == 'add') {
     // Get the keys.
     $keys[] = array(
         'text'          => 1,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:1'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-1'
     );
     $keys[] = array(
         'text'          => 2,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:2'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-2'
     );
     $keys[] = array(
         'text'          => 3,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:3'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-3'
     );
     $keys[] = array(
         'text'          => 4,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:4'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-4'
     );
     $keys[] = array(
         'text'          => 5,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:5'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-5'
     );
     $keys[] = array(
         'text'          => 6,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:6'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-6'
     );
     $keys[] = array(
         'text'          => 7,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:7'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-7'
     );
     $keys[] = array(
         'text'          => 8,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:8'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-8'
     );
     $keys[] = array(
         'text'          => 9,
-        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:9'
+        'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:save-9'
     );
 
     $keys = inline_key_array($keys, 3);
