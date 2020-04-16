@@ -1891,7 +1891,7 @@ function keys_trainerinfo($show = false)
  * @param $raid
  * @return array
  */
-function keys_vote($raid)
+function keys_vote($raid)sadfasd§$%&/()=;sdf3
 {
     // Init keys_time array.
     $keys_time = [];
@@ -1909,12 +1909,13 @@ function keys_vote($raid)
     debug_log("Pokemoni:".$raid['pokemon']);
 
     // Find Info-image_type_to_extension
-    $image = ROOT_PATH . '/boss-info/' . $raid['pokemon'] .'.png' ;
+    /* $image = ROOT_PATH . '/boss-info/' . $raid['pokemon'] .'.png' ;
     if(file_exists($image))
       debug_log("Vorhanden Pokemoni:".$raid['pokemon']);
     else {
       debug_log("Nicht vorhanden Pokemoni:".$raid['pokemon']);
     }
+    */
     // Extra Keys
     $buttons_extra = [
         [
