@@ -72,7 +72,7 @@ if($action == 'add') {
         'callback_data' => $pokedex_id . ':pokedex_set_neededTrainer:9'
     );
 
-
+    $keys = inline_key_array($keys, 3);
     // Build callback message string.
     $callback_response = 'OK';
 
