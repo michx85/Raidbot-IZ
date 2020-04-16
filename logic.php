@@ -2477,7 +2477,7 @@ function keys_vote($raid)
                 if(count($keys_UI_config) == count($keys_default) && count(array_diff($keys_UI_config, $keys_default)) == 0){
                     // Custom keys order
                     foreach ($keys_UI_config as $keyname) {
-                        $keys = array_merge($keys, ${'buttons_' . $keyname},$button_bossinfo);
+                        $keys = array_merge($keys, ${'buttons_' . $keyname});
                     }
                 } else {
                     // Default keys order
