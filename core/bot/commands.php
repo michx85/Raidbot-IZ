@@ -64,7 +64,7 @@ else if($update['message']['chat']['type'] == 'private')
 		$returnValue = preg_match('/^[A-Za-z0-9]{0,15}$/', $update['message']['text']);
 		if($returnValue)
 		{
-			sendMessage($userid, getTranslation('trainername_success').' <b>'.$update['message']['text'].'</b>');
+			sendMessage($userid, getTranslation('trainername_success').' <b>'.$update['message']['text'].'</b>'.CR.CR."Dein Trainerdaten kannst du mit /trainer jederzeit ändern. Um ein Raid anzulegen, schreibe /start");
 			$neuername = $update['message']['text'];
 			my_query("UPDATE users SET warteaufname = NULL, trainername = '{$neuername}' WHERE user_id = {$userid}");
 		}
