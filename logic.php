@@ -3271,6 +3271,7 @@ function raid_poll_message($msg_array, $append, $skip = false)
  */
 function show_raid_poll($raid)
 {
+  error_log("Show Raid Poll");
     // Init empty message string.
     //$msg = '';
     $msg = array();
@@ -3343,7 +3344,7 @@ function show_raid_poll($raid)
     // Display raid boss name.
     //if(RAID_PICTURE == false) {
         $msg = raid_poll_message($msg, getPublicTranslation('raid_boss') . ': <b>' . get_local_pokemon_name($raid['pokemon'], true) . '</b>', true);
-        debug_log("Raidbossi");
+
         // Display raid boss weather.
         $pokemon_weather = get_pokemon_weather($raid['pokemon']);
         $msg = raid_poll_message($msg, ($pokemon_weather != 0) ? (' ' . get_weather_icons($pokemon_weather)) : '', true);
