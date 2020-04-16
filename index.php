@@ -13,7 +13,7 @@ debug_log("RAID-BOT '" . BOT_ID . "'");
 if($_GET['bossinfo'] == "true")
 {
   header('Content-type:image/png');
-  readfile(IMAGE_PATH  . $raid['pokemon'] .'.png');
+  readfile(IMAGE_PATH  . $_GET['pic'] .'.png');
   die();
 }
 // Check API Key and get input from telegram
