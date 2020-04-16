@@ -19,16 +19,6 @@ if(is_file(ROOT_PATH . '/constants.php')) {
     require_once(ROOT_PATH . '/constants.php');
 }
 
-error_log(CORE_BOT_PATH . '/config.php');
-
-if(is_file(ROOT_PATH . '/boss-info/642-normal.png')) {
-    error_log('jojojo');
-}
-
-if(is_file(CORE_BOT_PATH . '/boss-info/642-normal.png')) {
-    error_log('jojojo22');
-}
-
 // Config
 require_once(CORE_BOT_PATH . '/config.php');
 
