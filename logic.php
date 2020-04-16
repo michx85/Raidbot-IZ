@@ -234,13 +234,15 @@ function get_raid($raid_id)
         "
     );
 
-    if(FORCE_TRAINERNAME == false)
-      $row['name'] = $row['TGname'];
-    else if($row['name'] == "")
-      $row['name'] = $row['TGname'];
+
 
     // Get the row.
     $raid = $rs->fetch_assoc();
+
+    if(FORCE_TRAINERNAME == false)
+      $raid['name'] = $raid['TGname'];
+    else if($raid['name'] == "")
+      $raid['name'] = $raid['TGname'];
 
     debug_log($raid);
 
