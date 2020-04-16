@@ -1908,6 +1908,13 @@ function keys_vote($raid)
 
     debug_log("Pokemoni:".$raid['pokemon']);
 
+    // Find Info-image_type_to_extension
+    $image = ROOT_PATH . '/boss-info/' . $raid['pokemon'] .'.png' ;
+    if(file_exists($image))
+      debug_log("Vorhanden Pokemoni:".$raid['pokemon']);
+    else {
+      debug_log("Nicht vorhanden Pokemoni:".$raid['pokemon']);
+    }
     // Extra Keys
     $buttons_extra = [
         [
