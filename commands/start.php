@@ -38,7 +38,7 @@ debug_log('SEARCH_TRAINERNAME: '.$userid);
 
 
   $answer = $rs->fetch_assoc();
-  if($answer['ingame'] == '')
+  if($answer['trainername'] == '')
   {
     debug_log('ASKFOR_TRAINERNAME: '.$userid);
   	sendMessage($userid, 'Moin...'.CR.'Wir kennen uns noch gar nicht. Kannst du mir bitte deinen Trainernamen nennen?');
