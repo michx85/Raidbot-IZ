@@ -2430,12 +2430,14 @@ function keys_vote($raid)
                         $buttons_pokemon = [];
                     }
                 }
-                debug_log("Pokemon:".$raid['pokemon']);
+
+                debug_log("Pokemoni:".$raid['pokemon']);
+
                 // $button_info = [array(
                 //    'text'          => 'Boss-Info: '.get_local_pokemon_name($raid['pokemon']),
                 //     'callback_data' => '0:boss-info:'.$raid['pokemon']
                 // );];
-                
+
                 // Init keys array
                 $keys = [];
 
