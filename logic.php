@@ -1912,7 +1912,7 @@ function keys_vote($raid)
     // Find Info-image_type_to_extension
      $image = IMAGE_PATH  . $raid['pokemon'] .'.png' ;
     if(file_exists($image))
-    $button_bossinfo = [
+    $buttons_bossinfo = [
         [
             [
                 'text'          => "Boss-Info: ".get_local_pokemon_name($raid['pokemon']),
@@ -2459,7 +2459,7 @@ function keys_vote($raid)
 
                 // Get UI order from config and apply if nothing is missing!
                 $keys_UI_config = explode(',', RAID_POLL_UI_ORDER);
-                $keys_default = explode(',', 'extra,teamlvl,time,pokemon,status');
+                $keys_default = explode(',', 'extra,teamlvl,time,pokemon,status,bossinfo');
 
                 //debug_log($keys_UI_config);
                 //debug_log($keys_default);
