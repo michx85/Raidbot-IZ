@@ -199,7 +199,9 @@ if($time_now < $raid['end_time']) {
         '493-dragon' => '26',
         '493-dark' => '27',
         '493-fairy' => '28',
-        '641-normal' => '11'
+        '641-normal' => '11',
+        '642-normal' => '11',
+
     );
 
     // Map pokemon form for filename
@@ -235,7 +237,6 @@ if($time_now < $raid['end_time']) {
         } else {
         	$img_pokemon = imagecreatefrompng(IMAGES_PATH . "/pokemon/pokemon_icon_" . $pokemon_id . "_" . $pokemon_form . ".png");
         }
-        error_log($img_pokemon);
 
         // Position and size of the picture
         $dst_x = $dst_y = 100;
