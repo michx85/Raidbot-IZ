@@ -25,7 +25,7 @@ if(FORCE_TRAINERNAME)
   	$updmsg = $update['inline_query']['from'];
   }
 
-  if (!empty($msg['id'])) {
+  if (!empty($updmsg['id'])) {
   	$userid = $updmsg['id'];
 
   } else {
