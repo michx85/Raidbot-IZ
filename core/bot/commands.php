@@ -1,6 +1,8 @@
 <?php
 
   debug_log('COMMAND()... geht das?');
+
+  
 // Init command.
 $command = NULL;
 
