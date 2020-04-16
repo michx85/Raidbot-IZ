@@ -235,7 +235,7 @@ if($time_now < $raid['end_time']) {
         } else {
         	$img_pokemon = imagecreatefrompng(IMAGES_PATH . "/pokemon/pokemon_icon_" . $pokemon_id . "_" . $pokemon_form . ".png");
         }
-        debug_log($img_pokemon);
+        error_log($img_pokemon);
 
         // Position and size of the picture
         $dst_x = $dst_y = 100;
