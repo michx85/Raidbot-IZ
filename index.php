@@ -2,6 +2,8 @@
 // Parent dir.
 $parent = __DIR__;
 
+error_log("Start");
+
 // Include requirements and perfom initial steps
 include_once(__DIR__ . '/core/bot/requirements.php');
 
@@ -16,14 +18,14 @@ $webhook = false;
 foreach ($update as $raid) {
 
     if (isset($raid['type']) && $raid['type'] == 'raid') {
-    
+
         $webhook = true;
-        break;    
+        break;
     }
 }
 
 if ($webhook === false) {
-    
+
     // DDOS protection
     include_once(CORE_BOT_PATH . '/ddos.php');
 }
@@ -38,7 +40,7 @@ include_once(CORE_BOT_PATH . '/db.php');
 include_once(CORE_BOT_PATH . '/cleanup_run.php');
 
 if ($webhook === true) {
-    
+
     // Create raid(s) and exit.
     include_once(ROOT_PATH . '/commands/raid_from_webhook.php');
     $dbh = null;

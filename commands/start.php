@@ -1,6 +1,6 @@
 <?php
 // Write to log.
-debug_log('START()');
+debug_log('START()...');
 
 // For debug.
 //debug_log($update);
