@@ -1908,14 +1908,19 @@ function keys_vote($raid)
     debug_log($start_time, 'UTC START:');
     error_log("Pokemoni:".$raid['pokemon']);
 
-
+    $button_bossinfo = [];
     // Find Info-image_type_to_extension
      $image = IMAGE_PATH  . $raid['pokemon'] .'.png' ;
     if(file_exists($image))
+    $button_bossinfo = [
+        [
+            [
+                'text'          => "Boss-Info: ".get_local_pokemon_name($raid['pokemon']),
+                'callback_data' => '0:bossinfo:'.$raid['pokemon']
+            ]
+        ]
+    ];
       error_log("Vorhanden Pokemoni:".$image);
-    else {
-      error_log("Nicht vorhanden Pokemoni:".$image);
-    }
 
     // Extra Keys
     $buttons_extra = [
@@ -2472,11 +2477,11 @@ function keys_vote($raid)
                 if(count($keys_UI_config) == count($keys_default) && count(array_diff($keys_UI_config, $keys_default)) == 0){
                     // Custom keys order
                     foreach ($keys_UI_config as $keyname) {
-                        $keys = array_merge($keys, ${'buttons_' . $keyname});
+                        $keys = array_merge($keys, ${'buttons_' . $keyname},$button_bossinfo);
                     }
                 } else {
                     // Default keys order
-                    $keys = array_merge($buttons_extra,$buttons_teamlvl,$buttons_time,$buttons_pokemon,$buttons_status);
+                    $keys = array_merge($buttons_extra,$buttons_teamlvl,$buttons_time,$buttons_pokemon,$buttons_status,$button_bossinfo);
                 }
             }
         }
