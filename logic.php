@@ -1906,7 +1906,7 @@ function keys_vote($raid)
     debug_log($now, 'UTC NOW:');
     debug_log($end_time, 'UTC END:');
     debug_log($start_time, 'UTC START:');
-
+error_log("Pokemoni:".$raid['pokemon']);
     debug_log("Pokemoni:".$raid['pokemon']);
 
     // Find Info-image_type_to_extension
