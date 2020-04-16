@@ -3348,6 +3348,13 @@ function show_raid_poll($raid)
         $pokemon_weather = get_pokemon_weather($raid['pokemon']);
         $msg = raid_poll_message($msg, ($pokemon_weather != 0) ? (' ' . get_weather_icons($pokemon_weather)) : '', true);
         $msg = raid_poll_message($msg, CR, true);
+
+        if($raid['neededTrainer'] > 0)
+        {
+          $msg = raid_poll_message($msg, "Machbar mit <b>".$raid['neededTrainer']."</b> Trainern mit suboptimalen LVL25 Kontern/Wetter", true);
+          $msg = raid_poll_message($msg, CR, true)
+        }
+
     //}
 
     // Display attacks.
