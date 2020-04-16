@@ -2016,10 +2016,10 @@ function keys_vote($raid)
                 'text'          => $text_late,
                 'callback_data' => $raid['id'] . ':vote_status:late'
             ],
-            [
+            /* [
                 'text'          => $text_done,
                 'callback_data' => $raid['id'] . ':vote_status:raid_done'
-            ],
+            ], */
             [
                 'text'          => $text_cancel,
                 'callback_data' => $raid['id'] . ':vote_status:cancel'
