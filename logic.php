@@ -1914,7 +1914,7 @@ function keys_vote($raid)
     if(file_exists($image))
       error_log("Vorhanden Pokemoni:".$raid['pokemon']);
     else {
-      error_log("Nicht vorhanden Pokemoni:".$raid['pokemon']);
+      error_log("Nicht vorhanden Pokemoni:".$image);
     }
 
     // Extra Keys
