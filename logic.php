@@ -1911,10 +1911,10 @@ function keys_vote($raid)
 
     // Find Info-image_type_to_extension
      $image = IMAGE_PATH  . $raid['pokemon'] .'.png' ;
-    if(file_exists(DEBUG_LOGFILE))
-      error_log("Vorhanden Pokemoni:".DEBUG_LOGFILE);
+    if(file_exists($image))
+      error_log("Vorhanden Pokemoni:".$image);
     else {
-      error_log("Nicht vorhanden Pokemoni:".DEBUG_LOGFILE);
+      error_log("Nicht vorhanden Pokemoni:".$image);
     }
 
     // Extra Keys
