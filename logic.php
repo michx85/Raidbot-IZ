@@ -1893,7 +1893,7 @@ function keys_trainerinfo($show = false)
  */
 function keys_vote($raid)
 {
-  error_log('joss');
+
     // Init keys_time array.
     $keys_time = [];
 
@@ -1906,7 +1906,7 @@ function keys_vote($raid)
     debug_log($now, 'UTC NOW:');
     debug_log($end_time, 'UTC END:');
     debug_log($start_time, 'UTC START:');
-    error_log("Pokemoni:".$raid['pokemon']);
+
 
     $button_bossinfo = [];
     // Find Info-image_type_to_extension
@@ -1920,7 +1920,6 @@ function keys_vote($raid)
             ]
         ]
     ];
-      error_log("Vorhanden Pokemoni:".$image);
 
     // Extra Keys
     $buttons_extra = [
