@@ -1906,6 +1906,8 @@ function keys_vote($raid)
     debug_log($end_time, 'UTC END:');
     debug_log($start_time, 'UTC START:');
 
+    debug_log("Pokemoni:".$raid['pokemon']);
+
     // Extra Keys
     $buttons_extra = [
         [
@@ -2431,7 +2433,7 @@ function keys_vote($raid)
                     }
                 }
 
-                debug_log("Pokemoni:".$raid['pokemon']);
+
 
                 // $button_info = [array(
                 //    'text'          => 'Boss-Info: '.get_local_pokemon_name($raid['pokemon']),
