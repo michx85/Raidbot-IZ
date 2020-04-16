@@ -51,6 +51,7 @@ if (substr($update['message']['text'], 0, 1) == '/') {
 }
 else if($update['message']['chat']['type'] == 'private')
 {
+  debug_log('Namenseingabe?')
 	$userid = $update['message']['from']['id'];
 	$rs = my_query("SELECT user_id FROM users WHERE user_id = {$userid} AND warteaufname > NOW()");
 	$answer = $rs->fetch_assoc();
