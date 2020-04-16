@@ -222,7 +222,7 @@ function get_raid($raid_id)
         "
         SELECT     raids.*,
                    gyms.lat, gyms.lon, gyms.address, gyms.gym_name, gyms.ex_gym, gyms.gym_note,
-                   users.name,
+                   users.trainername AS name, name AS TGname
                    TIME_FORMAT(TIMEDIFF(end_time, UTC_TIMESTAMP()) + INTERVAL 1 MINUTE, '%k:%i') AS t_left,
                    TIMESTAMPDIFF(MINUTE,raids.start_time,raids.end_time) as t_duration
         FROM       raids
@@ -233,6 +233,11 @@ function get_raid($raid_id)
         WHERE      raids.id = {$raid_id}
         "
     );
+
+    if(FORCE_TRAINERNAME == false)
+      $row['name'] = $row['TGname'];
+    else if($row['name'] == "")
+      $row['name'] = $row['TGname'];
 
     // Get the row.
     $raid = $rs->fetch_assoc();
