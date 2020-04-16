@@ -28,3 +28,5 @@ define('ACCESS_PATH', ROOT_PATH . '/access');
 define('DDOS_PATH', ROOT_PATH . '/ddos');
 define('CUSTOM_PATH', ROOT_PATH . '/custom');
 define('UPGRADE_PATH', ROOT_PATH . '/sql/upgrade');
+
+define('IMAGE_PATH', dirname(__DIR__,2));
