@@ -201,6 +201,7 @@ if($time_now < $raid['end_time']) {
         '493-fairy' => '28',
         '641-normal' => '11',
         '642-normal' => '11',
+        '645-normal' => '11',
 
     );
 
