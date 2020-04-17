@@ -57,28 +57,57 @@ if ($webhook === true) {
 update_user($update);
 
 
+// Spam Wächter
+if (isset($update['message']) && $update['message']['chat']['type'] != 'private')
+{
+  error_log('MSG:'.json_encode($update));
+	$words = explode('|', SPAM_LIST);
+	$block = "";
+	foreach($words AS $word)
+		if(strpos(strtolower($update['message']['text']), strtolower($word)) !== false)
+		{
+			$weil .= $word." ";
+		}
+	if($weil != "")
+	{
+		if($update['message']['chat']['id'] == "-1001362728989")
+			$chat = "PokIZ Chat";
+		else if($update['message']['chat']['id'] == "-1001480092920")
+			$chat = "PokIZ Sichtung und Aufgaben";
+		else if($update['message']['chat']['id'] == "-1001402293667")
+			$chat = "PokIZ Trainercodes";
+		else
+			$chat = "Unbekannte Gruppe (".$update['message']['chat']['id'].")";
+
+		// Lösche Nachricht
+		// sendMessage(-1001176206801, "Es wurde eine Nachricht automatisch gelöscht: ".CR."Chat: ".$chat.CR."Vorname: ".$update['message']['from']['first_name'].CR."Nachname: ".$update['message']['from']['last_name'].CR."Username: ".$update['message']['from']['username'].CR."Nachricht: ".$update['message']['text'].CR."Gefundene Wörter: ".$weil);
+		sendMessage(370365060, "Es wurde eine Nachricht automatisch gelöscht: ".CR."Chat: ".$chat.CR."Vorname: ".$update['message']['from']['first_name'].CR."Nachname: ".$update['message']['from']['last_name'].CR."Username: ".$update['message']['from']['username'].CR."Nachricht: ".$update['message']['text'].CR."Gefundene Wörter: ".$weil);
+		$p = delete_message($update['message']['chat']['id'], $update['message']['message_id']);
+
+	}
+}
+
+// Willkommensnachricht
 if(isset($update['message']['new_chat_member']) AND $update['message']['chat']['id'] == WELCOME_CHAT)
 {
   $text = WELCOME_MSG;
   $text = str_replace('<name>', $update['message']['new_chat_member']['first_name'], $text);
   $text = str_replace('<br>', CR, $text);
 
-  error_log('WELCOME 1: '.$text);
+
    preg_match_all('/(EMOJI_[A-Z]*)/',$text,$emojis);
-   error_log('WELCOME 2: '.json_encode($emojis));
+
    foreach($emojis[1] AS $emoji)
    {
-      error_log('WELCOME 3: '.$emoji);
+
      if(defined($emoji))
      {
-       error_log('WELCOME 4: '.$emoji);
+
        $text = str_replace($emoji, constant($emoji), $text);
      }
-     else {
-       error_log('WELCOME 5: '.$emoji);
-     }
+
    }
-  error_log('WELCOME 6: '.$text);
+
   sendMessage(WELCOME_CHAT,$text);
 
 }
