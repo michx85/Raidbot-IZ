@@ -637,7 +637,7 @@ function send_photo($chat_id, $photo_url, $text = array(), $inline_keyboard = fa
 
     // Write to log.
     debug_log($reply_json, '>');
-    error_log('json', $reply_json);
+
     // Send request to telegram api.
     return curl_request($reply_json, $multicurl);
 }
@@ -716,7 +716,6 @@ function curl_request($json, $multicurl = false)
 
     // Bridge mode?
     defined('BRIDGE_MODE') or define('BRIDGE_MODE', false);
-
 
     // Send request to telegram api.
     if($multicurl == true) {
