@@ -72,11 +72,11 @@ if (isset($update['message']) && $update['message']['chat']['type'] != 'private'
 	{
 
 			$chat = $update['message']['chat']['title'];
-		
+
 
 		// Lösche Nachricht
 		// sendMessage(-1001176206801, "Es wurde eine Nachricht automatisch gelöscht: ".CR."Chat: ".$chat.CR."Vorname: ".$update['message']['from']['first_name'].CR."Nachname: ".$update['message']['from']['last_name'].CR."Username: ".$update['message']['from']['username'].CR."Nachricht: ".$update['message']['text'].CR."Gefundene Wörter: ".$weil);
-		sendMessage(370365060, "Es wurde eine Nachricht automatisch gelöscht: ".CR."Chat: ".$chat.CR."Vorname: ".$update['message']['from']['first_name'].CR."Nachname: ".$update['message']['from']['last_name'].CR."Username: ".$update['message']['from']['username'].CR."Nachricht: ".$update['message']['text'].CR."Gefundene Wörter: ".$weil);
+		sendMessage(MAINTAINER_ID, "Es wurde eine Nachricht automatisch gelöscht: ".CR."Chat: ".$chat.CR."Vorname: ".$update['message']['from']['first_name'].CR."Nachname: ".$update['message']['from']['last_name'].CR."Username: ".$update['message']['from']['username'].CR."Nachricht: ".$update['message']['text'].CR."Gefundene Wörter: ".$weil);
 		$p = delete_message($update['message']['chat']['id'], $update['message']['message_id']);
 
 	}
