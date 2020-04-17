@@ -10,7 +10,7 @@ include_once(__DIR__ . '/core/bot/requirements.php');
 // Start logging.
 debug_log("RAID-BOT '" . BOT_ID . "'");
 
-if($_GET['bossinfo'] == "true")
+if(isset($_GET['bossinfo']) AND $_GET['bossinfo'] == "true")
 {
   header('Content-type:image/png');
   readfile(IMAGE_PATH  . $_GET['pic'] .'.png');
@@ -65,8 +65,8 @@ if(isset($update['message']['new_chat_member']) AND $update['message']['chat']['
 
   error_log('WELCOME 1: '.$text);
    preg_match_all('/(EMOJI_[A-Z]*)/',$text,$emojis);
-   error_log('WELCOME 2: '.$emojis);
-   foreach($emojis AS $emoji)
+   error_log('WELCOME 2: '.json_encode($emojis));
+   foreach($emojis[1] AS $emoji)
    {
       error_log('WELCOME 3: '.$emoji);
      if(defined($emoji))
