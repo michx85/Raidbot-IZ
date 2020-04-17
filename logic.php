@@ -1910,7 +1910,7 @@ function keys_vote($raid)
 
     $buttons_bossinfo = [];
     // Find Info-image_type_to_extension
-     $image = IMAGE_PATH  .'bi_'. $raid['pokemon'] .'.png' ;
+     $image = IMAGE_PATH  .$raid['pokemon'] .'.png' ;
     if(file_exists($image))
     $buttons_bossinfo = [
         [
