@@ -62,7 +62,23 @@ if(isset($update['message']['new_chat_member']) AND $update['message']['chat']['
   $text = WELCOME_MSG;
   $text = str_replace('<name>', $update['message']['new_chat_member']['first_name'], $text);
   $text = str_replace('<br>', CR, $text);
-  error_log($text);
+
+  error_log('WELCOME 1: '.$text);
+   preg_match_all('/(EMOJI_[A-Z]*)/',$text,$emojis);
+   error_log('WELCOME 2: '.$emojis);
+   foreach($emojis AS $emoji)
+   {
+      error_log('WELCOME 3: '.$emoji);
+     if(defined($emoji))
+     {
+       error_log('WELCOME 4: '.$emoji);
+       $text = str_replace($emoji, constant($emoji), $text);
+     }
+     else {
+       error_log('WELCOME 5: '.$emoji);
+     }
+   }
+  error_log('WELCOME 6: '.$text);
   sendMessage(WELCOME_CHAT,$text);
 
 }
