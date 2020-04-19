@@ -1908,20 +1908,7 @@ function keys_vote($raid)
     debug_log($start_time, 'UTC START:');
 
 
-    $buttons_bossinfo = [];
-    // Find Info-image_type_to_extension
-     $image = IMAGE_PATH  .$raid['pokemon'] .'.png' ;
-    if(file_exists($image))
-    {
-    $buttons_bossinfo = [
-        [
-            [
-                'text'          => "Boss-Info: ".get_local_pokemon_name($raid['pokemon']),
-                'callback_data' => '0:bossinfo:'.$raid['pokemon']
-            ]
-        ]
-    ];
-  }
+
     // Extra Keys
     $buttons_extra = [
         [
@@ -2381,7 +2368,21 @@ function keys_vote($raid)
             debug_log('Participants for raid with ID ' . $raid['id'] . ': ' . $count_pp);
             debug_log('Participants who voted for any pokemon: ' . $count_any_pokemon);
             debug_log('Participants who voted for ' . $raid_pokemon . ': ' . $count_raid_pokemon);
-
+            $buttons_bossinfo = [];
+            // Find Info-image_type_to_extension
+             $image = IMAGE_PATH  .$raid['pokemon'] .'.png' ;
+            if(file_exists($image))
+            {
+            $buttons_bossinfo = [
+                [
+                    [
+                        'text'          => "Boss-Info: ".get_local_pokemon_name($raid['pokemon']),
+                        'callback_data' => '0:bossinfo:'.$raid['pokemon']
+                    ]
+                ]
+            ];
+          }
+          
             // Zero Participants? Show only time buttons!
             if($count_pp == 0) {
                 $keys = array_merge($buttons_time,$button_bossinfo);
