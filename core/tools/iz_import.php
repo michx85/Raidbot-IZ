@@ -29,8 +29,19 @@ foreach($data AS $dat)
     echo "X".$dat->name." | ".$dat->image." | ".$dat->lat." | ".$dat->lon." | ".$dat->ex."<br>";
     $res = $db->query("SELECT * FROM gyms WHERE gym_id = '".$dat->portal_id."'");
     $row = $res->fetch_object();
-    echo "Z".$row->name." | ".$row->img_url." | ".$dat->lat." | ".$dat->lon." | ".$dat->ex_gym."<br>";
+    echo "Z".$row->gym_name." | ".$row->img_url." | ".$row->lat." | ".$row->lon." | ".$row->ex_gym."<br>";
+    if($row->ex_gym == 1)
+      $dat->ex = 1;
+    else {
+      $dat->ex = 0;
+    }
 
+    if($row->gym_name != "")
+      $sql = "UPDATE gyms SET name = '".$dat->name."', lat = '".$dat->lat."', lon = '".$dat->lon."', ex_gym = ".$dat->ex.", img_url = '".$dat->image."' WHERE gym_id = '".$dat->portal_id."'";
+    else {
+      $sql = "INSERT INTO `gyms` (`id`, `lat`, `lon`, `address`, `gym_name`, `ex_gym`, `show_gym`, `gym_note`, `gym_id`, `img_url`) VALUES (NULL, '".$dat->lat."', '".$dat->lon."', NULL, '".$dat->name."', ".$dat->ex.", 1, NULL, '".$dat->name."', '".$dat->image."');";
+    }
+    mysql_query($sql);
 }
 
 
