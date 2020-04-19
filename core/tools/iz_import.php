@@ -1,6 +1,6 @@
 <?php
 
-$url = "https://lanched.ru/PortalGet/searchPortals.php?query=".$row->portal_id;
+$url = "https://raidsiz.lima-city.de/m2t/gyms_iz.php";
 		// echo $url;
 
 $homepage = file_get_contents($url);
