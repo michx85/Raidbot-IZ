@@ -2385,7 +2385,7 @@ function keys_vote($raid)
             // Zero Participants? Show only time buttons!
             if($count_pp == 0) {
                 $keys = array_merge($buttons_time,$button_bossinfo);
-                error_log("warte mal1:".json_encode(($buttons_time));
+                error_log("warte mal1:".json_encode($buttons_time));
                 error_log("warte mal2:".json_encode($button_bossinfo));
                 error_log("warte mal3:".json_encode($keys));
 
