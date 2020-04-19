@@ -30,7 +30,7 @@ foreach($data AS $dat)
     $res = $db->query("SELECT * FROM gyms WHERE gym_id = '".$dat->portal_id."'");
     $row = $res->fetch_object();
     // echo "Z".$row->gym_name." | ".$row->img_url." | ".$row->lat." | ".$row->lon." | ".$row->ex_gym."<br>";
-    if($row->ex_gym == 1)
+    if($row->ex_gym == 1 OR $dat->ex == 1)
       $dat->ex = 1;
     else {
       $dat->ex = 0;
@@ -41,7 +41,7 @@ foreach($data AS $dat)
     else {
       $sql = "INSERT INTO `gyms` (`id`, `lat`, `lon`, `address`, `gym_name`, `ex_gym`, `show_gym`, `gym_note`, `gym_id`, `img_url`) VALUES (NULL, '".$dat->lat."', '".$dat->lon."', NULL, '".$dat->name."', ".$dat->ex.", 1, NULL, '".$dat->portal_id."', '".$dat->image."');";
     }
-    
+
     $db->query($sql);
 }
 
