@@ -1,8 +1,11 @@
 <?php
 
 define('CONFIG_PATH', '../bot/config');
-
-include_once(__DIR__ . '/core/bot/config.php');
+echo "0".dirname('__DIR__');
+echo "1".dirname('__DIR__',1);
+echo "2".dirname('__DIR__',2);
+echo "3".dirname('__DIR__',3);
+// include_once(dir . '/core/bot/config.php');
 
 echo VERSION;
 
