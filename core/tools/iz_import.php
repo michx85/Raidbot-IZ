@@ -1,8 +1,7 @@
 <?php
 
-define('CONFIG_PATH', dirname(__DIR__).'/bot/config');
 
-include_once(dirname(__DIR__). '/bot/config.php');
+include_once(dirname(__DIR__). '/bot/requirements.php');
 
 echo VERSION;
 
