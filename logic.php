@@ -2383,7 +2383,7 @@ function keys_vote($raid)
 
             // Zero Participants? Show only time buttons!
             if($count_pp == 0) {
-                $keys = $buttons_time;
+                $keys = array_merge($buttons_time,$button_bossinfo);
             } else {
                 // Init keys pokemon array.
                 $buttons_pokemon = [];
