@@ -1911,7 +1911,9 @@ function keys_vote($raid)
     $buttons_bossinfo = [];
     // Find Info-image_type_to_extension
      $image = IMAGE_PATH  .$raid['pokemon'] .'.png' ;
+     error_log("Deme-Bild: ".$image);
     if(file_exists($image))
+    {
     $buttons_bossinfo = [
         [
             [
@@ -1920,7 +1922,8 @@ function keys_vote($raid)
             ]
         ]
     ];
-
+     error_log("Deme-Bild exisitiert: ".$image);
+  }
     // Extra Keys
     $buttons_extra = [
         [
@@ -2384,7 +2387,8 @@ function keys_vote($raid)
             // Zero Participants? Show only time buttons!
             if($count_pp == 0) {
                 $keys = array_merge($buttons_time,$button_bossinfo);
-                $keys = [];
+                error_log("warte mal".json_encode($keys));
+
             } else {
                 // Init keys pokemon array.
                 $buttons_pokemon = [];
