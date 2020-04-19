@@ -1,6 +1,6 @@
 <?php
 
-define('CONFIG_PATH', _DIR_ . '/config');
+define('../../config');
 
 include_once(__DIR__ . '/core/bot/config.php');
 
