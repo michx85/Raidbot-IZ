@@ -1,6 +1,6 @@
 <?php
 
-include_once('../bot/requirements.php');
+include_once(__DIR__ . '/core/bot/requirements.php');
 
 $url = "https://raidsiz.lima-city.de/m2t/gyms_iz.php";
 		// echo $url;
