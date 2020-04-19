@@ -29,7 +29,7 @@ foreach($data AS $dat)
     echo "X".$dat->name." | ".$dat->image." | ".$dat->lat." | ".$dat->lon." | ".$dat->ex."<br>";
     $res = $db->query("SELECT * FROM gyms WHERE gym_id = '".$dat->portal_id."'");
     $row = $res->fetch_object();
-    echo "Z".$row->gym_name." | ".$row->img_url." | ".$row->lat." | ".$row->lon." | ".$row->ex_gym."<br>";
+    // echo "Z".$row->gym_name." | ".$row->img_url." | ".$row->lat." | ".$row->lon." | ".$row->ex_gym."<br>";
     if($row->ex_gym == 1)
       $dat->ex = 1;
     else {
@@ -41,6 +41,8 @@ foreach($data AS $dat)
     else {
       $sql = "INSERT INTO `gyms` (`id`, `lat`, `lon`, `address`, `gym_name`, `ex_gym`, `show_gym`, `gym_note`, `gym_id`, `img_url`) VALUES (NULL, '".$dat->lat."', '".$dat->lon."', NULL, '".$dat->name."', ".$dat->ex.", 1, NULL, '".$dat->name."', '".$dat->image."');";
     }
+    error_log($sql);
+    die();
     mysql_query($sql);
 }
 
