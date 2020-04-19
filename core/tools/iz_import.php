@@ -1,6 +1,7 @@
 <?php
 
-define('CONFIG_PATH', '../bot/config');
+// define('CONFIG_PATH', '../bot/config');
+echo __DIR__;
 echo "0".dirname('__DIR__');
 echo "1".dirname('__DIR__',1);
 echo "2".dirname('__DIR__',2);
