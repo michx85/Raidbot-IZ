@@ -37,9 +37,9 @@ foreach($data AS $dat)
     }
 
     if($row->gym_id != "")
-      $sql = "UPDATE gyms SET gym_name = '".$dat->name."', lat = '".$dat->lat."', lon = '".$dat->lon."', ex_gym = ".$dat->ex.", img_url = '".$dat->image."', gym_note = '".$dat->name."' WHERE gym_id = '".$dat->portal_id."'";
+      $sql = "UPDATE gyms SET gym_name = '".$dat->name."', lat = '".$dat->lat."', lon = '".$dat->lon."', ex_gym = ".$dat->ex.", img_url = '".$dat->image."', address = '".$dat->name."' WHERE gym_id = '".$dat->portal_id."'";
     else {
-      $sql = "INSERT INTO `gyms` (`id`, `lat`, `lon`, `address`, `gym_name`, `ex_gym`, `show_gym`, `gym_note`, `gym_id`, `img_url`) VALUES (NULL, '".$dat->lat."', '".$dat->lon."', NULL, '".$dat->name."', ".$dat->ex.", 1, '".$dat->name."', '".$dat->portal_id."', '".$dat->image."');";
+      $sql = "INSERT INTO `gyms` (`id`, `lat`, `lon`, `address`, `gym_name`, `ex_gym`, `show_gym`, `gym_note`, `gym_id`, `img_url`) VALUES (NULL, '".$dat->lat."', '".$dat->lon."', '".$dat->name."', '".$dat->name."', ".$dat->ex.", 1, NULL, '".$dat->portal_id."', '".$dat->image."');";
     }
     error_log($sql);
     $db->query($sql);
