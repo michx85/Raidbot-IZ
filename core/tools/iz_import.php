@@ -3,6 +3,9 @@
 
 include_once(dirname(__DIR__). '/bot/requirements.php');
 
+if($_GET['api_key'] != IMPORT_KEY AND DB_NAME == 'raidbot_iz')
+	die();
+
 // Datenbankverbindung
 if($db = new mysqli(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME))
 {
