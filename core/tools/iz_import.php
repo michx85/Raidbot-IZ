@@ -36,7 +36,7 @@ foreach($data AS $dat)
       $dat->ex = 0;
     }
 
-    if($row->portal_id != "")
+    if($row->gym_id != "")
       $sql = "UPDATE gyms SET gym_name = '".$dat->name."', lat = '".$dat->lat."', lon = '".$dat->lon."', ex_gym = ".$dat->ex.", img_url = '".$dat->image."' WHERE gym_id = '".$dat->portal_id."'";
     else {
       $sql = "INSERT INTO `gyms` (`id`, `lat`, `lon`, `address`, `gym_name`, `ex_gym`, `show_gym`, `gym_note`, `gym_id`, `img_url`) VALUES (NULL, '".$dat->lat."', '".$dat->lon."', NULL, '".$dat->name."', ".$dat->ex.", 1, NULL, '".$dat->portal_id."', '".$dat->image."');";
