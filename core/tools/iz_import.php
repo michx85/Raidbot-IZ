@@ -44,7 +44,6 @@ foreach($data AS $dat)
     else {
       $sql = "INSERT INTO `gyms` (`id`, `lat`, `lon`, `address`, `gym_name`, `ex_gym`, `show_gym`, `gym_note`, `gym_id`, `img_url`) VALUES (NULL, '".$dat->lat."', '".$dat->lon."', '".$dat->name."', '".$dat->name."', ".$dat->ex.", 1, NULL, '".$dat->portal_id."', '".$dat->image."');";
     }
-    error_log($sql);
     $db->query($sql);
 }
 

@@ -2,8 +2,6 @@
 // Parent dir.
 $parent = __DIR__;
 
-error_log("Start");
-
 // Include requirements and perfom initial steps
 include_once(__DIR__ . '/core/bot/requirements.php');
 
@@ -60,7 +58,6 @@ update_user($update);
 // Spam Wächter
 if (isset($update['message']) && $update['message']['chat']['type'] != 'private')
 {
-  error_log('MSG:'.json_encode($update));
 	$words = explode('|', SPAM_LIST);
 	$block = "";
 	foreach($words AS $word)
