@@ -45,15 +45,12 @@ function my_query($query, $cleanup_query = false)
  */
 function debug_log($val, $type = '*', $cleanup_log = false)
 {
-    error_log("---1: Start-Debuglog. Val: ".$val);
-    error_log("---2: Start-Debuglog. debug: ".DEBUG);
     // Make sure DEBUG is defined - otherwise define with a default of false.
     defined('DEBUG') or define('DEBUG', false);
-    error_log("---3: Start-Debuglog. debug: ".DEBUG);
 
     // Write to log only if debug is enabled.
     if (DEBUG === true && defined('DEBUG_LOGFILE') && defined('CLEANUP_LOGFILE')) {
-        error_log("---4: Start-Debuglog. debug: ".DEBUG_LOGFILE);
+
         $date = @date('Y-m-d H:i:s');
         $usec = microtime(true);
         $date = $date . '.' . str_pad(substr($usec, 11, 4), 4, '0', STR_PAD_RIGHT);
@@ -73,13 +70,9 @@ function debug_log($val, $type = '*', $cleanup_log = false)
             if ($cleanup_log == true) {
                 error_log('[' . $date . '][' . getmypid() . '] ' . $bl . $type . ' ' . $v . "\n", 3, CLEANUP_LOGFILE);
             } else {
-              error_log("---6: Start-Debuglog. debug: ".$bl."--".$v);
                 error_log('[' . $date . '][' . getmypid() . '] ' . $bl . $type . ' ' . $v . "\n", 3, DEBUG_LOGFILE);
             }
         }
-    }
-    else {
-      error_log("---5: Start-Debuglog. debug: ".DEBUG_LOGFILE);
     }
 }
 
