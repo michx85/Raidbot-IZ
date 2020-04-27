@@ -3521,7 +3521,7 @@ function show_raid_poll($raid)
                                 sum(extra_mystic)           AS extra_mystic,
                                 sum(extra_valor)            AS extra_valor,
                                 sum(extra_instinct)         AS extra_instinct,
-                                sum(remote)         AS count_remote
+                                sum(remote)         AS count_remote,
                                 sum(IF(late = '1', (late = '1') + extra_mystic + extra_valor + extra_instinct, 0)) AS count_late,
                                 sum(pokemon = '0')                   AS count_any_pokemon,
                                 sum(pokemon = '{$raid['pokemon']}')  AS count_raid_pokemon,
