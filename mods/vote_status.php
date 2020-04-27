@@ -9,7 +9,7 @@ debug_log('vote_status()');
 // Check if the user has voted for this raid before.
 $rs = my_query(
     "
-    SELECT    user_id, attend_time, extra_valor+remote+extra_mystic+extra_instinct AS remote
+    SELECT    user_id, attend_time, remote
     FROM      attendance
       WHERE   raid_id = {$data['id']}
         AND   user_id = {$update['callback_query']['from']['id']}
