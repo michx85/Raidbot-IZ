@@ -3598,11 +3598,11 @@ function show_raid_poll($raid)
                 // Add hint for late attendances.
                 if(RAID_LATE_MSG && $previous_att_time == 'FIRST_RUN' && $cnt_latewait > 0) {
                     $late_wait_msg = str_replace('RAID_LATE_TIME', RAID_LATE_TIME, getPublicTranslation('late_participants_wait'));
-                    $msg = raid_poll_message($msg, CR . EMOJI_LATE . '<i>' . getPublicTranslation('late_participants') . ' ' . $late_wait_msg . '</i>' . CR);
+                    $msg = raid_poll_message($msg, CR . EMOJI_LATE . ' <i>' . getPublicTranslation('late_participants') . ' ' . $late_wait_msg . '</i>' . CR);
                 }
 
                 if($previous_att_time == 'FIRST_RUN' && $cnt_remote > 0) {
-                    $msg = raid_poll_message($msg, CR . EMOJI_REMOTE . '<i> Es nehmen Teilnehmer aus der Ferne teil. Bitte alle Teilnehmer den '.EMOJI_HERE.'-Button verwenden wenn man startbereit ist.</i>' . CR);
+                    $msg = raid_poll_message($msg, CR . EMOJI_REMOTE . '<i> Es nehmen Trainer aus der Ferne teil. Bitte den '.EMOJI_HERE.'-Button verwenden wenn man bereit zum Starten ist.</i>' . CR);
                 }
 
                 // Add section/header for time
