@@ -3425,6 +3425,7 @@ function show_raid_poll($raid)
                         sum(extra_valor)            AS extra_valor,
                         sum(extra_instinct)         AS extra_instinct,
                         sum(IF(late = '1', (late = '1') + extra_mystic + extra_valor + extra_instinct, 0)) AS count_late,
+                        sum(arrived)                 AS count_here,
                         sum(remote)                 AS count_remote,
                         sum(pokemon = '0')                   AS count_any_pokemon,
                         sum(pokemon = '{$raid['pokemon']}')  AS count_raid_pokemon,
@@ -3621,6 +3622,7 @@ function show_raid_poll($raid)
                         $count_valor = $cnt[$current_att_time]['count_valor'] + $cnt[$current_att_time]['extra_valor'];
                         $count_instinct = $cnt[$current_att_time]['count_instinct'] + $cnt[$current_att_time]['extra_instinct'];
                         $count_late = $cnt[$current_att_time]['count_late'];
+                        $count_status = $cnt[$current_att_time]['count_late']+$cnt[$current_att_time]['count_here'];
                         $count_remote = $cnt[$current_att_time]['count_remote'];
 
                         // Add to message.
@@ -3669,8 +3671,13 @@ function show_raid_poll($raid)
                 }
 
                 // Add users: ARRIVED --- TEAM -- LEVEL -- NAME -- INVITE -- EXTRAPEOPLE
+                if($count_status > 1)
+                  $rowsign = (EMOJI_MINUS . ' ');
+                else {
+                  $rowsign = "";
+                }
                 $msg = raid_poll_message($msg, ($row['remote']) ? (EMOJI_REMOTE . ' ') :  (($count_remote > 0) ? (EMOJI_WALK . ' ') : ''));
-                $msg = raid_poll_message($msg, ($row['arrived']) ? (EMOJI_HERE . ' ') : (($row['late']) ? (EMOJI_LATE . ' ') : (($count_remote > 0) ? (EMOJI_MINUS . ' ') : (EMOJI_PLUS . ' '))));
+                $msg = raid_poll_message($msg, ($row['arrived']) ? (EMOJI_HERE . ' ') : (($row['late']) ? (EMOJI_LATE . ' ') : $rowsign ));
                 $msg = raid_poll_message($msg, ($row['team'] === NULL) ? ($GLOBALS['teams']['unknown'] . ' ') : ($GLOBALS['teams'][$row['team']] . ' '));
                 $msg = raid_poll_message($msg, ($row['level'] == 0) ? ('<b>00</b> ') : (($row['level'] < 10) ? ('<b>0' . $row['level'] . '</b> ') : ('<b>' . $row['level'] . '</b> ')));
                 $msg = raid_poll_message($msg, '<a href="tg://user?id=' . $row['user_id'] . '">' . htmlspecialchars($row['name']) . '</a> ');
