@@ -18,7 +18,7 @@ $rs = my_query(
 
 // Get the answer.
 $answer = $rs->fetch_assoc();
-checkRemote($update['callback_query']['from']['id'], $data['id'], $rs['attend_time'],1);
+checkRemote($update['callback_query']['from']['id'], $data['id'], $answer['attend_time'],1);
 // Write to log.
 debug_log($answer);
 
