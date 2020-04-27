@@ -9,7 +9,7 @@ debug_log('vote_status()');
 // Check if the user has voted for this raid before.
 $rs = my_query(
     "
-    SELECT    user_id
+    SELECT    user_id, attend_time
     FROM      attendance
       WHERE   raid_id = {$data['id']}
         AND   user_id = {$update['callback_query']['from']['id']}
@@ -17,13 +17,13 @@ $rs = my_query(
 );
 
 // Get the answer.
-$answer = $rs->fetch_assoc();
+$raidanswer = $rs->fetch_assoc();
 
 // Write to log.
-debug_log($answer);
+debug_log($raidanswer);
 
 // Make sure user has voted before.
-if (!empty($answer)) {
+if (!empty($raidanswer)) {
     // Get status to update
     $status = $data['arg'];
     alarm($data['id'],$update['callback_query']['from']['id'],'status',$status);
@@ -69,6 +69,9 @@ if (!empty($answer)) {
         $msg_text .= EMOJI_HERE . SP . $gymname . SP . '(' . $raidtimes . ')';
         sendmessage($update['callback_query']['from']['id'], $msg_text);
     } else if($status == 'remote'){
+
+      checkRemote($update['callback_query']['from']['id'], $data['id'], $raidanswer['attend_time']);
+
         // All other status-updates are using the short query
         my_query(
 	"

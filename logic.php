@@ -2652,6 +2652,18 @@ function send_vote_time_first($update)
     exit();
 }
 
+function checkRemote($user, $raid, $attendtime, $plus = 0)
+{
+  $cnt_remote = my_query("SELECT SUM(extra_mystic)+SUM(extra_valor)+SUM(extra_instinct)+SUM(remote) AS cnt_remote FROM attendance WHERE raid_id = {$raid} AND (remote = 1 OR user_id = {$user}) AND attend_time = '{$attend_time}'")
+  $countanswer = $cnt_remote->fetch_assoc();
+
+  if($countanswer+$plus > MAX_REMOTE)
+  {
+    answerCallbackQuery($update['callback_query']['id'], 'Es nehmen bereits '.MAX_REMOTE.' Trainer aus der Ferne teil.');
+    exit();
+  }
+}
+
 /**
  * Send vote for a future time.
  * @param $update
@@ -3425,7 +3437,7 @@ function show_raid_poll($raid)
                         sum(extra_valor)            AS extra_valor,
                         sum(extra_instinct)         AS extra_instinct,
                         sum(IF(late = '1', (late = '1') + extra_mystic + extra_valor + extra_instinct, 0)) AS count_late,
-                        sum(remote)                 AS count_remote,
+                        sum(IF(remote = '1', (remote = '1') + extra_mystic + extra_valor + extra_instinct, 0))                 AS count_remote,
                         sum(pokemon = '0')                   AS count_any_pokemon,
                         sum(pokemon = '{$raid['pokemon']}')  AS count_raid_pokemon,
                         sum(pokemon != '{$raid['pokemon']}' AND pokemon != '0')  AS count_other_pokemon,
@@ -3523,7 +3535,7 @@ function show_raid_poll($raid)
                                 sum(extra_mystic)           AS extra_mystic,
                                 sum(extra_valor)            AS extra_valor,
                                 sum(extra_instinct)         AS extra_instinct,
-                                sum(remote)         AS count_remote,
+                                sum(IF(remote = '1', (remote = '1') + extra_mystic + extra_valor + extra_instinct, 0))                 AS count_remote,
                                 sum(IF(late = '1', (late = '1') + extra_mystic + extra_valor + extra_instinct, 0)) AS count_late,
                                 sum(pokemon = '0')                   AS count_any_pokemon,
                                 sum(pokemon = '{$raid['pokemon']}')  AS count_raid_pokemon,

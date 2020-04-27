@@ -9,7 +9,7 @@ debug_log('vote()');
 // Check if the user has voted for this raid before.
 $rs = my_query(
     "
-    SELECT    user_id
+    SELECT    user_id, attend_time
     FROM      attendance
       WHERE   raid_id = {$data['id']}
         AND   user_id = {$update['callback_query']['from']['id']}
@@ -18,7 +18,7 @@ $rs = my_query(
 
 // Get the answer.
 $answer = $rs->fetch_assoc();
-
+checkRemote($update['callback_query']['from']['id'], $data['id'], $raidanswer['attend_time']);
 // Write to log.
 debug_log($answer);
 
