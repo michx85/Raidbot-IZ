@@ -1971,17 +1971,20 @@ function keys_vote($raid)
         $text_late = EMOJI_LATE;
         $text_done = TEAM_DONE;
         $text_cancel = TEAM_CANCEL;
+        $text_remote = EMOJI_REMOTE;
     // Icon + text.
     } else if(RAID_VOTE_ICONS == true && RAID_VOTE_TEXT == true) {
         $text_here = EMOJI_HERE . getPublicTranslation('here');
         $text_late = EMOJI_LATE . getPublicTranslation('late');
         $text_done = TEAM_DONE . getPublicTranslation('done');
         $text_cancel = TEAM_CANCEL . getPublicTranslation('cancellation');
+        $text_cancel = EMOJI_REMOTE . getPublicTranslation('remote');
     // Text.
     } else {
         $text_here = getPublicTranslation('here');
         $text_late = getPublicTranslation('late');
         $text_done = getPublicTranslation('done');
+        $text_done = getPublicTranslation('remote');
         $text_cancel = getPublicTranslation('cancellation');
     }
 
@@ -2008,6 +2011,10 @@ function keys_vote($raid)
                 'text'          => $text_done,
                 'callback_data' => $raid['id'] . ':vote_status:raid_done'
             ], */
+            [
+                'text'          => $text_remote,
+                'callback_data' => $raid['id'] . ':vote_status:remote'
+            ],
             [
                 'text'          => $text_cancel,
                 'callback_data' => $raid['id'] . ':vote_status:cancel'
@@ -3418,6 +3425,7 @@ function show_raid_poll($raid)
                         sum(extra_valor)            AS extra_valor,
                         sum(extra_instinct)         AS extra_instinct,
                         sum(IF(late = '1', (late = '1') + extra_mystic + extra_valor + extra_instinct, 0)) AS count_late,
+                        sum(remote)                 AS count_remote,
                         sum(pokemon = '0')                   AS count_any_pokemon,
                         sum(pokemon = '{$raid['pokemon']}')  AS count_raid_pokemon,
                         sum(pokemon != '{$raid['pokemon']}' AND pokemon != '0')  AS count_other_pokemon,
@@ -3513,6 +3521,7 @@ function show_raid_poll($raid)
                                 sum(extra_mystic)           AS extra_mystic,
                                 sum(extra_valor)            AS extra_valor,
                                 sum(extra_instinct)         AS extra_instinct,
+                                sum(remote)         AS count_remote
                                 sum(IF(late = '1', (late = '1') + extra_mystic + extra_valor + extra_instinct, 0)) AS count_late,
                                 sum(pokemon = '0')                   AS count_any_pokemon,
                                 sum(pokemon = '{$raid['pokemon']}')  AS count_raid_pokemon,
@@ -3606,6 +3615,7 @@ function show_raid_poll($raid)
                         $count_valor = $cnt[$current_att_time]['count_valor'] + $cnt[$current_att_time]['extra_valor'];
                         $count_instinct = $cnt[$current_att_time]['count_instinct'] + $cnt[$current_att_time]['extra_instinct'];
                         $count_late = $cnt[$current_att_time]['count_late'];
+                        $count_remote = $cnt[$current_att_time]['count_remote'];
 
                         // Add to message.
                         $msg = raid_poll_message($msg, ' — ');
@@ -3614,6 +3624,7 @@ function show_raid_poll($raid)
                         $msg = raid_poll_message($msg, (($count_instinct > 0) ? TEAM_Y . $count_instinct . '  ' : ''));
                         $msg = raid_poll_message($msg, (($cnt[$current_att_time]['count_no_team'] > 0) ? TEAM_UNKNOWN . $cnt[$current_att_time]['count_no_team'] . '  ' : ''));
                         $msg = raid_poll_message($msg, (($count_late > 0) ? EMOJI_LATE . $count_late . '  ' : ''));
+                        $msg = raid_poll_message($msg, (($count_remote > 0) ? EMOJI_REMOTE . $count_remote . '  ' : ''));
                     }
                     $msg = raid_poll_message($msg, CR);
                 }
@@ -3637,6 +3648,7 @@ function show_raid_poll($raid)
                         $poke_count_valor = $current_att_time_poke['count_valor'] + $current_att_time_poke['extra_valor'];
                         $poke_count_instinct = $current_att_time_poke['count_instinct'] + $current_att_time_poke['extra_instinct'];
                         $poke_count_late = $current_att_time_poke['count_late'];
+                        $poke_count_remote = $current_att_time_poke['count_remote'];
 
                         // Add to message.
                         $msg = raid_poll_message($msg, ' [' . ($current_att_time_poke['count'] + $count_att_time_poke_extrapeople) . '] — ');
@@ -3645,11 +3657,13 @@ function show_raid_poll($raid)
                         $msg = raid_poll_message($msg, (($poke_count_instinct > 0) ? TEAM_Y . $poke_count_instinct . '  ' : ''));
                         $msg = raid_poll_message($msg, (($current_att_time_poke['count_no_team'] > 0) ? TEAM_UNKNOWN . ($current_att_time_poke['count_no_team']) : ''));
                         $msg = raid_poll_message($msg, (($poke_count_late > 0) ? EMOJI_LATE . $poke_count_late . '  ' : ''));
+                        $msg = raid_poll_message($msg, (($poke_count_remote > 0) ? EMOJI_REMOTE . $poke_count_remote . '  ' : ''));
                         $msg = raid_poll_message($msg, CR);
                     }
                 }
 
                 // Add users: ARRIVED --- TEAM -- LEVEL -- NAME -- INVITE -- EXTRAPEOPLE
+                $msg = raid_poll_message($msg, ($row['remote']) ? (EMOJI_REMOTE . ' ') : ''));
                 $msg = raid_poll_message($msg, ($row['arrived']) ? (EMOJI_HERE . ' ') : (($row['late']) ? (EMOJI_LATE . ' ') : '└ '));
                 $msg = raid_poll_message($msg, ($row['team'] === NULL) ? ($GLOBALS['teams']['unknown'] . ' ') : ($GLOBALS['teams'][$row['team']] . ' '));
                 $msg = raid_poll_message($msg, ($row['level'] == 0) ? ('<b>00</b> ') : (($row['level'] < 10) ? ('<b>0' . $row['level'] . '</b> ') : ('<b>' . $row['level'] . '</b> ')));
