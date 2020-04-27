@@ -3669,7 +3669,7 @@ function show_raid_poll($raid)
                 }
 
                 // Add users: ARRIVED --- TEAM -- LEVEL -- NAME -- INVITE -- EXTRAPEOPLE
-                $msg = raid_poll_message($msg, ($row['remote']) ? (EMOJI_REMOTE . ' ') :  (($count_remote > 0) ? (EMOJI_PLUS . ' ') : ''));
+                $msg = raid_poll_message($msg, ($row['remote']) ? (EMOJI_REMOTE . ' ') :  (($count_remote > 0) ? (EMOJI_WALK . ' ') : ''));
                 $msg = raid_poll_message($msg, ($row['arrived']) ? (EMOJI_HERE . ' ') : (($row['late']) ? (EMOJI_LATE . ' ') : (($count_remote > 0) ? (EMOJI_MINUS . ' ') : (EMOJI_PLUS . ' '))));
                 $msg = raid_poll_message($msg, ($row['team'] === NULL) ? ($GLOBALS['teams']['unknown'] . ' ') : ($GLOBALS['teams'][$row['team']] . ' '));
                 $msg = raid_poll_message($msg, ($row['level'] == 0) ? ('<b>00</b> ') : (($row['level'] < 10) ? ('<b>0' . $row['level'] . '</b> ') : ('<b>' . $row['level'] . '</b> ')));
