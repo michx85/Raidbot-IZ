@@ -29,7 +29,7 @@ if (!empty($answer)) {
     alarm($data['id'],$update['callback_query']['from']['id'],'status',$status);
     // Update attendance.
     if($status == 'alarm') {
-        // Enable / Disable alarm 
+        // Enable / Disable alarm
         my_query(
         "
         UPDATE attendance
@@ -68,6 +68,19 @@ if (!empty($answer)) {
 	}
         $msg_text .= EMOJI_HERE . SP . $gymname . SP . '(' . $raidtimes . ')';
         sendmessage($update['callback_query']['from']['id'], $msg_text);
+    } else if($status == 'remote'){
+        // All other status-updates are using the short query
+        my_query(
+	"
+        UPDATE  attendance
+        SET
+                raid_done = 0,
+                cancel = 0,
+                $status = 1
+        WHERE   raid_id = {$data['id']}
+        AND     user_id = {$update['callback_query']['from']['id']}
+        "
+        );
     } else {
         // All other status-updates are using the short query
         my_query(
