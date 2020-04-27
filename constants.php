@@ -27,9 +27,10 @@ defined('EMOJI_HELLO')		or define('EMOJI_HELLO',   iconv('UCS-4LE', 'UTF-8', pac
 defined('EMOJI_WACKEN')		or define('EMOJI_WACKEN',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F44B)));
 defined('EMOJI_NRECHTS')		or define('EMOJI_NRECHTS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F448)));
 defined('EMOJI_NLINKS')		or define('EMOJI_NLINKS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F449)));
-defined('EMOJI_REMOTE')		or define('EMOJI_REMOTE',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F6B7)));
+defined('EMOJI_REMOTE')		or define('EMOJI_REMOTE',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F52D)));
 defined('EMOJI_PLUS')		or define('EMOJI_PLUS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x2795)));
-defined('EMOJI_MINUSE')		or define('EMOJI_MINUS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x2796)));
+defined('EMOJI_WALK')		or define('EMOJI_WALK',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F463)));
+defined('EMOJI_MINUS')		or define('EMOJI_MINUS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x2796)));
 
 // Weather Icons.
 defined('EMOJI_W_SUNNY') 		or define('EMOJI_W_SUNNY',            iconv('UCS-4LE', 'UTF-8', pack('V', 0x2600)));
