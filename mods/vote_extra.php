@@ -18,7 +18,7 @@ $rs = my_query(
 
 // Get the answer.
 $answer = $rs->fetch_assoc();
-checkRemote($update['callback_query']['from']['id'], $data['id'], $answer['attend_time'],$update['callback_query']['id'],1);
+
 // Write to log.
 debug_log($answer);
 
@@ -39,6 +39,7 @@ if (!empty($answer)) {
             "
         );
     } else {
+        checkRemote($update['callback_query']['from']['id'], $data['id'], $answer['attend_time'],$update['callback_query']['id'],1);
         // Get team.
         $team = 'extra_' . $data['arg'];
         alarm($data['id'],$update['callback_query']['from']['id'],'extra',$data['arg']);

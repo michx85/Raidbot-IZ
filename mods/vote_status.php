@@ -9,7 +9,7 @@ debug_log('vote_status()');
 // Check if the user has voted for this raid before.
 $rs = my_query(
     "
-    SELECT    user_id, attend_time
+    SELECT    user_id, attend_time, remote
     FROM      attendance
       WHERE   raid_id = {$data['id']}
         AND   user_id = {$update['callback_query']['from']['id']}
@@ -70,7 +70,9 @@ if (!empty($raidanswer)) {
         sendmessage($update['callback_query']['from']['id'], $msg_text);
     } else if($status == 'remote'){
 
-      checkRemote($update['callback_query']['from']['id'], $data['id'], $raidanswer['attend_time'],$update['callback_query']['id']);
+      
+      if($raidanswer['remote'] == 0)
+        checkRemote($update['callback_query']['from']['id'], $data['id'], $raidanswer['attend_time'],$update['callback_query']['id']);
 
         // All other status-updates are using the short query
         my_query(
