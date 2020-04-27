@@ -68,7 +68,7 @@ if (!empty($answer)) {
 	}
         $msg_text .= EMOJI_HERE . SP . $gymname . SP . '(' . $raidtimes . ')';
         sendmessage($update['callback_query']['from']['id'], $msg_text);
-    } else if($status == 'arrived' OR $status == 'late' OR $status == 'remote'){
+    } else if($status == 'remote'){
         // All other status-updates are using the short query
         my_query(
 	"
@@ -84,6 +84,40 @@ if (!empty($answer)) {
         AND     user_id = {$update['callback_query']['from']['id']}
         "
         );
+      } else if($status == 'arrived'){
+          // All other status-updates are using the short query
+          my_query(
+    "
+          UPDATE  attendance
+          SET
+                  raid_done = 0,
+                  cancel = 0,
+                  late = 0,
+                  $status = CASE
+                        WHEN $status = '0' THEN '1'
+                        ELSE '0'
+                        END
+          WHERE   raid_id = {$data['id']}
+          AND     user_id = {$update['callback_query']['from']['id']}
+          "
+          );
+        } else if($status == 'late'){
+            // All other status-updates are using the short query
+            my_query(
+      "
+            UPDATE  attendance
+            SET
+                    raid_done = 0,
+                    cancel = 0,
+                    arrived = 0,
+                    $status = CASE
+                          WHEN $status = '0' THEN '1'
+                          ELSE '0'
+                          END
+            WHERE   raid_id = {$data['id']}
+            AND     user_id = {$update['callback_query']['from']['id']}
+            "
+            );
     } else {
         // All other status-updates are using the short query
         my_query(
