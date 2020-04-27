@@ -70,7 +70,7 @@ if (!empty($raidanswer)) {
         sendmessage($update['callback_query']['from']['id'], $msg_text);
     } else if($status == 'remote'){
 
-      checkRemote($update['callback_query']['from']['id'], $data['id'], $raidanswer['attend_time']);
+      checkRemote($update['callback_query']['from']['id'], $data['id'], $raidanswer['attend_time'],$update['callback_query']['id']);
 
         // All other status-updates are using the short query
         my_query(

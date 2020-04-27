@@ -2652,15 +2652,15 @@ function send_vote_time_first($update)
     exit();
 }
 
-function checkRemote($user, $raid, $attendtime, $plus = 0)
+function checkRemote($user, $raid, $attendtime,$cbi, $plus = 0)
 {
   $cnt_remote = my_query("SELECT SUM(extra_mystic)+SUM(extra_valor)+SUM(extra_instinct)+SUM(remote) AS cnt_remote FROM attendance WHERE raid_id = {$raid} AND (remote = 1 OR user_id = {$user}) AND attend_time = '{$attendtime}'");
   $countanswer = $cnt_remote->fetch_assoc();
   $sum = $countanswer['cnt_remote']+$plus ;
   if($sum > MAX_REMOTE)
   {
-    answerCallbackQuery($update['callback_query']['id'], 'Es nehmen bereits '.MAX_REMOTE.' Trainer aus der Ferne teil.');
-    exit();
+    answerCallbackQuery($cbi, 'Es nehmen bereits '.MAX_REMOTE.' Trainer aus der Ferne teil.');
+    die();
   }
 }
 
@@ -3614,7 +3614,7 @@ function show_raid_poll($raid)
                 }
 
                 if($previous_att_time == 'FIRST_RUN' && $cnt_remote > 0) {
-                    $msg = raid_poll_message($msg, CR . EMOJI_REMOTE . '<i> Es nehmen Trainer aus der Ferne teil. Bitte den '.EMOJI_HERE.'-Button verwenden wenn man bereit zum Starten ist.</i>' . CR);
+                    $msg = raid_poll_message($msg, CR . EMOJI_REMOTE . '<i> Es nehmen Trainer aus der Ferne teil. Bitte den '.EMOJI_HERE.'-Button verwenden wenn du bereit zum Starten bist.</i>' . CR);
                 }
 
                 // Add section/header for time
