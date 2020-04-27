@@ -34,7 +34,7 @@ foreach ($jsons as $index => $filename) {
         }
 
         // Check file permissions.
-        if((fileperms($cfile) & 0777) !== 0600) {
+        if((fileperms($cfile) & 0777) !== 0600 AND false) {
             error_log('Insecure file permissions: ' . $cfile . ' (0' . decoct(fileperms($cfile) & 0777) . ') - recommended file permissions: 0600');
         }
 
