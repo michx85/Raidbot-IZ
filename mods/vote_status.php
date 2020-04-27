@@ -76,7 +76,7 @@ if (!empty($answer)) {
         SET
                 raid_done = 0,
                 cancel = 0,
-                CASE
+                remote = CASE
                       WHEN remote = '0' THEN '1'
                       ELSE '0'
                       END
