@@ -2656,8 +2656,8 @@ function checkRemote($user, $raid, $attendtime, $plus = 0)
 {
   $cnt_remote = my_query("SELECT SUM(extra_mystic)+SUM(extra_valor)+SUM(extra_instinct)+SUM(remote) AS cnt_remote FROM attendance WHERE raid_id = {$raid} AND (remote = 1 OR user_id = {$user}) AND attend_time = '{$attend_time}'");
   $countanswer = $cnt_remote->fetch_assoc();
-
-  if($countanswer+$plus > MAX_REMOTE)
+  $sum = $countanswer+$plus ;
+  if($sum > MAX_REMOTE)
   {
     answerCallbackQuery($update['callback_query']['id'], 'Es nehmen bereits '.MAX_REMOTE.' Trainer aus der Ferne teil.');
     exit();
