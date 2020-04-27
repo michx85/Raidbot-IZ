@@ -3448,11 +3448,13 @@ function show_raid_poll($raid)
     $cnt = [];
     $cnt_all = 0;
     $cnt_latewait = 0;
+    $cnt_remote = 0;
 
     while ($cnt_row = $rs_cnt->fetch_assoc()) {
         $cnt[$cnt_row['ts_att']] = $cnt_row;
         $cnt_all = $cnt_all + $cnt_row['count'];
         $cnt_latewait = $cnt_latewait + $cnt_row['count_late'];
+        $cnt_remote = $cnt_remote + $cnt_row['count_remote'];
     }
 
     // Write to log.
@@ -3597,6 +3599,10 @@ function show_raid_poll($raid)
                 if(RAID_LATE_MSG && $previous_att_time == 'FIRST_RUN' && $cnt_latewait > 0) {
                     $late_wait_msg = str_replace('RAID_LATE_TIME', RAID_LATE_TIME, getPublicTranslation('late_participants_wait'));
                     $msg = raid_poll_message($msg, CR . EMOJI_LATE . '<i>' . getPublicTranslation('late_participants') . ' ' . $late_wait_msg . '</i>' . CR);
+                }
+
+                if($previous_att_time == 'FIRST_RUN' && $cnt_remote > 0) {
+                    $msg = raid_poll_message($msg, CR . EMOJI_REMOTE . '<i> Es nehmen Teilnehmer aus der Ferne teil. Bitte alle Teilnehmer den '.EMOJI_HERE.'-Button verwenden wenn man startbereit ist.</i>' . CR);
                 }
 
                 // Add section/header for time
