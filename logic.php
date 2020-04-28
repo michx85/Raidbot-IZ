@@ -3684,7 +3684,7 @@ function show_raid_poll($raid)
 
 
                 $msg = raid_poll_message($msg, ($row['arrived']) ? (EMOJI_HERE . ' ') : (($row['late']) ? (EMOJI_LATE . ' ') : (EMOJI_PLUS . ' ')));
-                $msg = raid_poll_message($msg, ($row['remote']) ? (EMOJI_REMOTE . ' ') :  (($count_remote > 0) ? (EMOJI_WALK . ' ') : ''));
+                $msg = raid_poll_message($msg, ($row['remote']) ? (EMOJI_REMOTE . ' ') :  (($count_remote > 0) ? (TEAM_R .' '. TEAM_B . ' ') : ''));
                 $msg = raid_poll_message($msg, ($row['team'] === NULL) ? ($GLOBALS['teams']['unknown'] . ' ') : ($GLOBALS['teams'][$row['team']] . ' '));
                 $msg = raid_poll_message($msg, ($row['level'] == 0) ? ('<b>00</b> ') : (($row['level'] < 10) ? ('<b>0' . $row['level'] . '</b> ') : ('<b>' . $row['level'] . '</b> ')));
                 $msg = raid_poll_message($msg, '<a href="tg://user?id=' . $row['user_id'] . '">' . htmlspecialchars($row['name']) . '</a> ');
