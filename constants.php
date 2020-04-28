@@ -29,7 +29,7 @@ defined('EMOJI_NRECHTS')		or define('EMOJI_NRECHTS',   iconv('UCS-4LE', 'UTF-8',
 defined('EMOJI_NLINKS')		or define('EMOJI_NLINKS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F449)));
 defined('EMOJI_REMOTE')		or define('EMOJI_REMOTE',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F52D)));
 defined('EMOJI_PLUS')		or define('EMOJI_PLUS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x2795)));
-defined('EMOJI_WALK')		or define('EMOJI_WALK',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F463)));
+defined('EMOJI_WALK')		or define('EMOJI_WALK',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F468)));
 defined('EMOJI_MINUS')		or define('EMOJI_MINUS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x2796)));
 
 // Weather Icons.
