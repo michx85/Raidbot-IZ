@@ -3510,10 +3510,35 @@ function show_raid_poll($raid)
         // Show message that voting is not possible!
         $msg = raid_poll_message($msg, CR . '<b>' . getPublicTranslation('raid_info_no_voting') . '</b> ' . CR);
     } else {
+      if(defined('NUTZUNGsBEDINGUNG') AND NUTZUNGsBEDINGUNG != '') {
+
+        $text = NUTZUNGsBEDINGUNG;
+        $text = str_replace('<name>', $update['message']['new_chat_member']['first_name'], $text);
+        $text = str_replace('<br>', CR, $text);
+
+
+         preg_match_all('/(EMOJI_[A-Z]*)/',$text,$emojis);
+
+         foreach($emojis[1] AS $emoji)
+         {
+
+           if(defined($emoji))
+           {
+
+             $text = str_replace($emoji, constant($emoji), $text);
+           }
+
+         }
+
+
+          $msg = raid_poll_message($msg, CR . $text . CR);
+      }
+      
         // Gym note?
         if(!empty($raid['gym_note'])) {
             $msg = raid_poll_message($msg, EMOJI_INFO . SP . $raid['gym_note'] . CR);
         }
+
 
         // Add Ex-Raid Message if Pokemon is in Ex-Raid-List.
         if($raid_level == 'X') {
@@ -3607,29 +3632,7 @@ function show_raid_poll($raid)
                 $dt_att_time = dt2time($row['attend_time']);
                 $current_pokemon = $row['pokemon'];
 
-                if(defined('NUTZUNGsBEDINGUNG') AND NUTZUNGsBEDINGUNG != '') {
 
-                  $text = NUTZUNGsBEDINGUNG;
-                  $text = str_replace('<name>', $update['message']['new_chat_member']['first_name'], $text);
-                  $text = str_replace('<br>', CR, $text);
-
-
-                   preg_match_all('/(EMOJI_[A-Z]*)/',$text,$emojis);
-
-                   foreach($emojis[1] AS $emoji)
-                   {
-
-                     if(defined($emoji))
-                     {
-
-                       $text = str_replace($emoji, constant($emoji), $text);
-                     }
-
-                   }
-
-
-                    $msg = raid_poll_message($msg, CR . $text . CR);
-                }
 
                 // Add hint for late attendances.
                 if(RAID_LATE_MSG && $previous_att_time == 'FIRST_RUN' && $cnt_latewait > 0) {
