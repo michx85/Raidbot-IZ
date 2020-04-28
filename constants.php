@@ -31,6 +31,8 @@ defined('EMOJI_REMOTE')		or define('EMOJI_REMOTE',   iconv('UCS-4LE', 'UTF-8', p
 defined('EMOJI_PLUS')		or define('EMOJI_PLUS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x2795)));
 defined('EMOJI_WALK')		or define('EMOJI_WALK',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F637)));
 defined('EMOJI_MINUS')		or define('EMOJI_MINUS',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x2796)));
+defined('EMOJI_WARN')		or define('EMOJI_WARN',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x26A0)));
+defined('EMOJI_CORONA')		or define('EMOJI_CORONA',   iconv('UCS-4LE', 'UTF-8', pack('V', 0x1F9A0)));
 
 // Weather Icons.
 defined('EMOJI_W_SUNNY') 		or define('EMOJI_W_SUNNY',            iconv('UCS-4LE', 'UTF-8', pack('V', 0x2600)));
