@@ -2654,7 +2654,7 @@ function send_vote_time_first($update)
 
 function checkRemote($user, $raid, $attendtime,$cbi, $plus = 0)
 {
-  $cnt_remote = my_query("SELECT SUM(extra_mystic)+SUM(extra_valor)+SUM(extra_instinct)+SUM(remote) AS cnt_remote FROM attendance WHERE raid_id = {$raid} AND (remote = 1 OR user_id = {$user}) AND attend_time = '{$attendtime}'");
+  $cnt_remote = my_query("SELECT SUM(extra_mystic)+SUM(extra_valor)+SUM(extra_instinct)+SUM(remote) AS cnt_remote FROM attendance WHERE (raid_id = 131 AND remote = 1 AND attend_time = '2020-04-28 00:20:00') OR (raid_id = 131 AND user_id = 370365060) ");
   $countanswer = $cnt_remote->fetch_assoc();
   $sum = $countanswer['cnt_remote']+$plus ;
   if($sum > MAX_REMOTE)
