@@ -3510,9 +3510,9 @@ function show_raid_poll($raid)
         // Show message that voting is not possible!
         $msg = raid_poll_message($msg, CR . '<b>' . getPublicTranslation('raid_info_no_voting') . '</b> ' . CR);
     } else {
-      if(defined('NUTZUNGsBEDINGUNG') AND NUTZUNGsBEDINGUNG != '') {
+      if(defined('NUTZUNGSBEDINGUNG') AND NUTZUNGSBEDINGUNG != '') {
 
-        $text = NUTZUNGsBEDINGUNG;
+        $text = NUTZUNGSBEDINGUNG;
         $text = str_replace('<name>', $update['message']['new_chat_member']['first_name'], $text);
         $text = str_replace('<br>', CR, $text);
 
@@ -3533,7 +3533,7 @@ function show_raid_poll($raid)
 
           $msg = raid_poll_message($msg, CR . $text . CR);
       }
-      
+
         // Gym note?
         if(!empty($raid['gym_note'])) {
             $msg = raid_poll_message($msg, EMOJI_INFO . SP . $raid['gym_note'] . CR);
