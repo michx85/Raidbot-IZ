@@ -3660,7 +3660,7 @@ function show_raid_poll($raid)
                         $count_valor = $cnt[$current_att_time]['count_valor'] + $cnt[$current_att_time]['extra_valor'];
                         $count_instinct = $cnt[$current_att_time]['count_instinct'] + $cnt[$current_att_time]['extra_instinct'];
                         $count_late = $cnt[$current_att_time]['count_late'];
-
+                        $count_remote = $cnt[$current_att_time]['count_remote'];
 
                         // Add to message.
                         $msg = raid_poll_message($msg, ' — ');
