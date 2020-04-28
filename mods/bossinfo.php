@@ -2,7 +2,7 @@
 
 debug_log('trainer_team()');
 
-bot_access_check($update, 'start');
+// bot_access_check($update, 'start');
 
 $pokemon = $data['arg'];
 
