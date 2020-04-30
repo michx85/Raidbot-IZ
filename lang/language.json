@@ -2602,5 +2602,17 @@
     "FR": "TRANSLATE",
     "PL": "TRANSLATE",
     "FI": "Ei ylimääräisiä kouluttajia!"
+  },
+  "max_remote": {
+    "NL": "TRANSLATE",
+    "DE": "Die maximale Anzahl an Fernraids ist erreicht: ",
+    "EN": "The maximum number of remote raiders has been reached: ",
+    "IT": "TRANSLATE",
+    "PT-BR": "TRANSLATE",
+    "RU": "TRANSLATE",
+    "NO": "TRANSLATE",
+    "FR": "TRANSLATE",
+    "PL": "TRANSLATE",
+    "FI": "TRANSLATE"
   }
 }
