@@ -2695,7 +2695,7 @@ function checkRemote($cbi, $user, $raid, $attendtime = '', $newpokemon = '', $ne
     // Wenn man bei jedem Raidboss mitmachen will, muss die Pokemonteilnehmerliste mit den meisten Fernraidern ermittelt werden
       if($p == 0)
       {
-        $cnt_rt_pkm = my_query("SELECT MAX(cnt) AS cnt FROM (SELECT SUM(1+extra_mystic+extra_valor+extra_instinct) AS cnt FROM attendance WHERE remote = 1 AND pokemon <> 0 AND user_id <> '{$user}' AND  raid_id = {$raid} AND attend_time = '{$attendtime}' GROUP by pokemon) AS p");
+        $cnt_rt_pkm = my_query("SELECT MAX(cnt) AS cnt FROM (SELECT SUM(1+extra_mystic+extra_valor+extra_instinct) AS cnt FROM attendance WHERE remote = 1 AND pokemon <> 0 AND user_id <> '{$user}' AND  raid_id = {$raid} AND attend_time = '{$attendtime}' AND cancel = 0 GROUP by pokemon) AS p");
         $rt_pkm_answer = $cnt_rt_pkm->fetch_assoc();
         // Anzahl der trainer in der gröchsten pokemon Gruppe
         $maxgrp = $rt_pkm_answer['cnt'];
@@ -2705,7 +2705,7 @@ function checkRemote($cbi, $user, $raid, $attendtime = '', $newpokemon = '', $ne
       }
 
       // Teilnehmergröße ermitteln
-      $cnt_rt_pkm = my_query("SELECT SUM(1+extra_mystic+extra_valor+extra_instinct) AS cnt FROM attendance WHERE remote = 1 AND raid_id = {$raid} AND attend_time = '{$attendtime}' AND user_id <> '{$user}' AND pokemon = '{$p}'");
+      $cnt_rt_pkm = my_query("SELECT SUM(1+extra_mystic+extra_valor+extra_instinct) AS cnt FROM attendance WHERE remote = 1 AND raid_id = {$raid} AND attend_time = '{$attendtime}' AND user_id <> '{$user}' AND pokemon = '{$p}'  AND cancel = 0");
       $rt_pkm_answer = $cnt_rt_pkm->fetch_assoc();
       $grp = $rt_pkm_answer['cnt'];
 
