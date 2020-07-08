@@ -202,6 +202,9 @@ if($time_now < $raid['end_time']) {
         '641-normal' => '11',
         '642-normal' => '11',
         '645-normal' => '11',
+        '646-normal' => '11',
+        '646-white' => '12',
+        '646-black' => '13'
 
     );
 
