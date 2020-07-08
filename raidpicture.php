@@ -210,8 +210,10 @@ if($time_now < $raid['end_time']) {
 
     // Map pokemon form for filename
     $pokemon_form = '00';
+    error_log("1: ".$pokemon_form);
     if(array_key_exists($raid['pokemon'], $pokeforms)) {
         $pokemon_form = $pokeforms[$raid['pokemon']];
+        error_log("2: ".$pokemon_form);
     } else {
         if($raid['pokemon_form'] == 'alolan') {
             $pokemon_form = '61';
@@ -219,10 +221,12 @@ if($time_now < $raid['end_time']) {
             $pokemon_form = '31';
         }
     }
+    error_log("3: ".$pokemon_form);
 
     // Raid Egg
     if($raid['pokedex_id'] > 9990) {
         // Getting the actual icon
+        error_log("4: ".IMAGES_PATH . "/raid_eggs/pokemon_icon_" . $raid['pokedex_id'] . "_" . $pokemon_form . ".png");
         $img_pokemon = imagecreatefrompng(IMAGES_PATH . "/raid_eggs/pokemon_icon_" . $raid['pokedex_id'] . "_" . $pokemon_form . ".png");
 
         // Position and size of the picture
