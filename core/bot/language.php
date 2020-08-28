@@ -81,7 +81,7 @@ function getTranslation($text, $override = false, $override_language = USERLANGU
 
         $str = file_get_contents($tfile);
         $json = json_decode($str, true);
-        
+
     // Pokemon moves?
     } else if(strpos($text, 'pokemon_move_') === 0) {
         // Translation filename
@@ -93,7 +93,7 @@ function getTranslation($text, $override = false, $override_language = USERLANGU
     // Custom language file.
     } else if(is_file(CUSTOM_PATH . '/language.json')) {
         $tfile = CUSTOM_PATH . '/language.json';
-            
+
         $str = file_get_contents($tfile);
         $json = json_decode($str, true);
     }
@@ -122,7 +122,7 @@ function getTranslation($text, $override = false, $override_language = USERLANGU
             }
         }
 
-        // Bot language file. 
+        // Bot language file.
         if(!(isset($json[$text]))){
             // Translation filename
             $tfile = BOT_LANG_PATH . '/language.json';
@@ -150,7 +150,7 @@ function getTranslation($text, $override = false, $override_language = USERLANGU
                 }
             }
         }
- 
+
         // Translation not in core or bot language file? - Try other bot files.
         if(!(isset($json[$text]))){
             // Get all bot specific language files
@@ -171,6 +171,7 @@ function getTranslation($text, $override = false, $override_language = USERLANGU
 
     // Debug log translation file
     debug_log($tfile,'T:');
+
 
     // Return pokemon name or translation
     if(strpos($text, 'pokemon_id_') === 0) {
