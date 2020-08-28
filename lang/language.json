@@ -11,6 +11,17 @@
     "PL": "Rajd",
     "FI": "Raidi"
   },
+  "Mstars": {
+  "NL": "Mega Raid",
+  "DE": "Mega Raid",
+  "EN": "Mega Raid",
+  "IT": "Mega Raid",
+  "PT-BR": "Mega Raid",
+  "RU": "Mega Raid",
+  "NO": "Mega Raid",
+  "PL": "Mega Raid",
+  "FI": "Mega Raid"
+},
   "Xstars": {
     "NL": "Ex-Raid",
     "DE": "Ex-Raid",

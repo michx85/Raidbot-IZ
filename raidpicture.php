@@ -172,7 +172,15 @@ $time_now = utcnow();
 if($time_now < $raid['end_time']) {
     // Build array to map pokedex_id-form to filenames
     $pokeforms = array(
+        '3-mega' => '51',
+        '9-mega' => '51',
+        '6-megaX' => '51',
+        '6-megaY' => '52',
+        '15-mega' => '51',
+        '18-mega' => '51',
         '150-armored' => '11',
+        '150-megaX' => '51',
+        '150-megaY' => '52',
         '386-normal' => '11',
         '386-attack' => '12',
         '386-defense' => '13',
